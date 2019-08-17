@@ -206,5 +206,16 @@ p merge([1,3,4], [2, 5, 7])
 p merge_sort([38, 27, 43, 3, 9, 82, 10])
 p merge([38, 27, 43],[3,9,82])
 
+def subsets(array)
+    return [[]] if array == []
+    old = subsets(array[0...-1])
+    old + old.map {|sub| sub + [array.last]}
+end
 
+p "Subsets"
+p subsets([]) # => [[]]
+p subsets([1]) # => [[], [1]]
+p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
+p subsets([1, 2, 3])
+# => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
