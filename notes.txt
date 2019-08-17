@@ -1,0 +1,18 @@
+=begin
+   def populate
+      string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+      i = 0
+      while i < @size
+      value = string[rand(0..string.length-1)]
+      arr = []
+      arr << value
+      card1 = Card.new(arr.pop)
+      card2 = card1.dup
+      rand_row = rand(0...size)
+      rand_col = rand(0...size)
+      pos = [rand_row, rand_col]
+      self[pos] = card1
+      self[pos] = card2
+      i += 1
+  end 
+=end
