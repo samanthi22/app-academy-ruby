@@ -219,3 +219,26 @@ p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
 p subsets([1, 2, 3])
 # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
+
+def permutations(array)
+    new_arr = []
+    if array.length == 1
+        return "s"
+    else
+       old = permutations(array[1..-1])
+       return "t"
+    end
+end
+
+p "use slice [0...element] then [element + 1..-1]"
+p "use permutations(array[1..-1])"
+
+p "permutations"
+p permutations([1, 2, 3]) # => [[1, 2, 3], [1, 3, 2],
+                        #     [2, 1, 3], [2, 3, 1],
+                        #     [3, 1, 2], [3, 2, 1]]
+p permutations([1,2]) # => [[1,2],[2,1]]
+#p each_array([1,2])
+#p each_array([1,2,3])
+#p permutations([1]) #=> [1]
+
