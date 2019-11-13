@@ -219,19 +219,60 @@ p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
 p subsets([1, 2, 3])
 # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
-
 def permutations(array)
-    new_arr = []
-    if array.length == 1
-        return "s"
-    else
-       old = permutations(array[1..-1])
-       return "t"
+    return [array] if array.size < 2
+    
+    num = [array.first]
+    
+    perms = permutations(array[1..-1])
+    
+    results = []
+    
+    for perm in perms
+       results << num + perm
+       for i in (1..perm.size-1)
+        results << (perm[0..i-1] + num + perm[i..-1])
+        end
+        results << perm + num
     end
+    
+    return results
+    
+    
+    
+    
+=begin
+for perm in perms
+  result << chr + perm
+  for i in (1..perm.size-1)
+    result << (perm[0..i-1] + chr + perm[i..-1])
+  end
+  result << perm + chr
 end
 
-p "use slice [0...element] then [element + 1..-1]"
-p "use permutations(array[1..-1])"
+=end    
+end
+
+=begin
+def permutations(string)
+  return [string] if string.size < 2
+
+  chr    = string.chars.first
+  perms  = permutations(string[1..-1])
+
+  result = []
+
+  for perm in perms
+  result << chr + perm
+  for i in (1..perm.size-1)
+    result << (perm[0..i-1] + chr + perm[i..-1])
+  end
+  result << perm + chr
+end
+  return result  
+end
+=end
+
 
 p "permutations"
 p permutations([1, 2, 3]) # => [[1, 2, 3], [1, 3, 2],
@@ -241,4 +282,5 @@ p permutations([1,2]) # => [[1,2],[2,1]]
 #p each_array([1,2])
 #p each_array([1,2,3])
 #p permutations([1]) #=> [1]
+#p permutations("abc")
 
