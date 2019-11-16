@@ -284,3 +284,15 @@ p permutations([1,2]) # => [[1,2],[2,1]]
 #p permutations([1]) #=> [1]
 #p permutations("abc")
 
+def greedy_make_change(amount, coins = [25, 10, 5, 1])
+    if coins.length == 1
+        return [1]
+    else
+    new_change = greedy_make_change(amount - coins.first, coins[1..-1])
+    return [coins.first] + new_change
+    end
+end 
+
+p "greedy make change"
+p greedy_make_change(39)
+p greedy_make_change(14, [10,7,1]) # [7,7]
